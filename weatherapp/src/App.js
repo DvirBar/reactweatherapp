@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import './App.css';
-import axios from 'axios';
+import React from 'react';
+import './styles/css/App.css';
+import WeatherList from './components/WeatherList';
+import WeatherNow from './components/WeatherNow';
+import WeatherProvider from './context/WeatherContext'; 
 
-function App() {
+function App() { 
+    return (
+        <div className="App">
+          <WeatherProvider>
+              <WeatherNow />
+              <WeatherList />
+          </WeatherProvider>
+        </div>
+      );
+  }
 
-  const [weather, setWeather] = useState({})
-
-  axios.get('http://localhost:5000/weather')
-    .then(res => setWeather(res.data))
-    .catch(err => console.log(err))
-
-  return (
-    <div className="App">
-      {weather.visibility}
-    </div>
-  );
-}
 
 export default App;
