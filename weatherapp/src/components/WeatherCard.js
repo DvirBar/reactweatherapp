@@ -7,10 +7,15 @@ function WeatherCard(props) {
     return (
         <div className="weather-card">
             <img src={img} />
-            <p>
-                <span>{Math.round(weather.temp.day)}</span>/
-                <span>{Math.round(weather.temp.night)}</span>
-            </p>
+            {props.isHourly
+                ? 
+                    <span>{Math.round(weather.temp)}</span>
+                :
+                <p>
+                    <span>{Math.round(weather.temp.day)}</span>/
+                    <span>{Math.round(weather.temp.night)}</span>
+                </p>
+            }
         </div>
     );
 }

@@ -21,14 +21,13 @@ function WeatherNow() {
         <div className="weather-now">
             {weather &&
             <Fragment>
-                <p className="current time">
-                    {moment.unix(weather.dt).tz(timeZone).format('HH:MM')}
-                </p>
-                <p className="current">
-                    {moment.unix(weather.dt).tz(timeZone).format('MMMM Do, YYYY')}
-                </p>
                 <img src={img} className="img-now" />
+                <p className="main-weather">{weather.weather[0].main}</p>
                 <p className="temp-now">{Math.round(weather.temp)}&#730;C</p>
+                <p>Feels like: {Math.round(weather.feels_like)}&#730;C</p>
+                <p className="current">
+                    Updated: {moment.unix(weather.dt).tz(timeZone).format('ddd, MMMM Do HH:MM')}
+                </p>
             </Fragment>
             }
         </div>

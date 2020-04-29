@@ -1,36 +1,101 @@
 $card-color:#003d9ec0; 
+$toggle-height: 20px;
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: transparent
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: #888;
+    border-radius: 10%;
+}
+
+::-webkit-scrollbar-thumb:hover:horizontal {
+    background: #555
+}
 
 body {
     background-color: #000c50;
+}
+
+.top {
+    height: 100vh;
+}
+
+.degree-toggle {
+    position: absolute;
+    top: 5%;
+    right:5%;
+    color: #fff;
+}
+
+.toggle {
+    background: #888;
+    height: $toggle-height;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+}
+
+.toggle-button {
+    position: relative;
+    left: 0;
+    height: $toggle-height;
+    width: $toggle-height;
+    border-radius: 20px;
+    background-color: #555;
+
 }
 
 .weather-now {
     margin: 10% 40% 20% 40%;
     text-align: center;
     color: #fff;
+    scroll-snap-align: start;
+    height: 100vh;
+}
+
+.main-weather {
+    font-size: 20px;
+    margin-top: 0;
 }
 
 .temp-now {
-    font-size: 30px ;
+    font-size: 50px ;
     margin: 0;
 }
 
-&current {
-    margin: 0;
-    %time {
-        font-size: 60px;
-    }
+.current {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.forecast {
+    height: 100vh;
 }
 
 .weather-list {
-    position: absolute;
-    width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    top: auto;
-    overflow:auto;
+    color: #fff;
+    margin: 0 10% 5% 10%;
+
+    &.hourly {
+        display: grid;
+        grid-template-columns: repeat(48, 1fr);
+        grid-template-columns: repeat(48, 1fr);
+        overflow-x:auto;
+    }
+
+    &.daily {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        overflow-x:auto;
+    }
 }
 .weather-card {
     margin: 10px;
