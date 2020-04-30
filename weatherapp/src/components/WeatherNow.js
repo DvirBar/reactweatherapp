@@ -3,13 +3,15 @@ import { WeatherContext } from '../context/WeatherContext';
 import moment from 'moment-timezone';
 
 function WeatherNow() {
-    const weatherInfo = useContext(WeatherContext)
-    const timeZone = weatherInfo.timezone
-    const [weather, setWeather] = useState(weatherInfo.current)
-    const [img, setImg] = useState('')
+    const context = useContext(WeatherContext);
+    const weatherInfo = context.state.weather;
+    const timeZone = weatherInfo.timezone;
+    const isFahren = context.state.isFahren;
+    const [weather, setWeather] = useState(weatherInfo.current);
+    const [img, setImg] = useState('');
 
     useEffect(() => {
-        setWeather(weatherInfo.current)
+        setWeather(weatherInfo.current);
     }, [weatherInfo])
 
     useEffect(() => {
@@ -23,8 +25,14 @@ function WeatherNow() {
             <Fragment>
                 <img src={img} className="img-now" />
                 <p className="main-weather">{weather.weather[0].main}</p>
-                <p className="temp-now">{Math.round(weather.temp)}&#730;C</p>
-                <p>Feels like: {Math.round(weather.feels_like)}&#730;C</p>
+                <p className="temp-now">
+                    {Math.round(weather.temp)}&#730;
+                    {isFahren ? <span>F</span> : <span>C</span>}
+                </p>
+                <p>Feels like: 
+                    {Math.round(weather.feels_like)}&#730;
+                    {isFahren ? <span>F</span> : <span>C</span>}
+                    </p>
                 <p className="current">
                     Updated: {moment.unix(weather.dt).tz(timeZone).format('ddd, MMMM Do HH:MM')}
                 </p>

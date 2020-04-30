@@ -3,7 +3,8 @@ import { WeatherContext } from '../context/WeatherContext';
 import WeatherCard from './WeatherCard';
 
 function WeatherHourly() {
-    const weatherInfo = useContext(WeatherContext)
+    const context = useContext(WeatherContext)
+    const weatherInfo = context.state.weather
 
     return (
         <div className="weather-list hourly">

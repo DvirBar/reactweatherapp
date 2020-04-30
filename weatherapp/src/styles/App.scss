@@ -1,6 +1,9 @@
 $card-color:#003d9ec0; 
 $toggle-height: 20px;
 
+* {
+    scroll-behavior: smooth;
+}
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -11,7 +14,6 @@ $toggle-height: 20px;
 
 ::-webkit-scrollbar-thumb:horizontal {
     background: #888;
-    border-radius: 10%;
 }
 
 ::-webkit-scrollbar-thumb:hover:horizontal {
@@ -31,24 +33,53 @@ body {
     top: 5%;
     right:5%;
     color: #fff;
+    z-index: 1;
 }
 
 .toggle {
-    background: #888;
-    height: $toggle-height;
+    position: relative;
+    display: inline-block;
     width: 40px;
-    height: 20px;
-    border-radius: 20px;
+    height: 24px;
+    margin: 0 5px 0 5px;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 }
 
 .toggle-button {
-    position: relative;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
     left: 0;
-    height: $toggle-height;
-    width: $toggle-height;
-    border-radius: 20px;
+    right: 0;
+    bottom: 0;
     background-color: #555;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 20px;
 
+    &:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        border-radius: 50%;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+}
+
+input:checked + .toggle-button:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
 }
 
 .weather-now {

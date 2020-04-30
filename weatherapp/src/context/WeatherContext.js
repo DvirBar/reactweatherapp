@@ -2,13 +2,14 @@ import React,  { useEffect, useReducer } from 'react';
 import WeatherReducer from './WeatherReducer';
 import axios from 'axios';
 
-export const WeatherContext = React.createContext();
-
 const initialState = {
-    loading: false,
-    error: '',
-    weather: {}
-  }
+  loading: false,
+  error: '',
+  isFahren: false,
+  weather: {}
+}
+
+const WeatherContext = React.createContext(initialState);
 
 const WeatherProvider = ({ children }) => {
     const [state, dispatch] = useReducer(WeatherReducer, initialState);
@@ -27,10 +28,10 @@ const WeatherProvider = ({ children }) => {
       }, [])
 
 return (
-    <WeatherContext.Provider value={state.weather} >
+    <WeatherContext.Provider value={{state: state, dispatch: dispatch}} >
         {children}
     </WeatherContext.Provider>
 )
 }
 
-export default WeatherProvider
+export { WeatherContext, WeatherProvider };
