@@ -1,0 +1,53 @@
+$dropdown_width: 150px;
+$dropdown_height: 30px;
+
+.dropdown {
+    box-sizing: border-box;
+    position: relative;
+    background-color: transparent;
+    height: $dropdown_height;
+    width: $dropdown_width;
+    border: solid 0.5px #fff;
+    border-radius: 3px;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    padding: 5px;
+    left: 5px;
+    color: #fff;
+    
+    &_toggler {
+        float: right;
+        cursor: pointer;
+    }
+
+    &_select {
+        display: block;
+        box-sizing: border-box;
+        margin: 0;
+        list-style: none;
+        width: $dropdown_width;
+        backdrop-filter: blur(5px);
+        padding: 5px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+        position: absolute;
+        left: 0;
+        top: $dropdown_height;
+        overflow: hidden;
+        transition: all 0.2s ease-out;
+        // z-index: -1;
+
+
+        li {
+            padding: 3px;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: #0000003f;
+            }
+        }
+    }
+}

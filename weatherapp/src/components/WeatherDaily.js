@@ -10,7 +10,7 @@ function WeatherDaily() {
         <div className="weather-list daily">
             {weatherInfo.daily &&
                 weatherInfo.daily.map(weather => 
-                <WeatherCard weather={weather} isHourly={false}/>  )
+                    <WeatherCard weather={weather} isHourly={false} />)
             }
         </div>
     );

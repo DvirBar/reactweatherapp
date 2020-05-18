@@ -68,9 +68,9 @@ export const WeatherReducer = (state, action) => {
           case 'CHANGE_FORMAT': 
             return {
               ...state,
+              loading: false,
               isFahren: action.payload,
               weather: formatTemp(state.weather, action.payload),
-              loading: false
             }
         default:
           return state;

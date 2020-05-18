@@ -1,0 +1,127 @@
+.weather-now {
+    margin: 10% 40% 20% 40%;
+    text-align: center;
+    color: #fff;
+    scroll-snap-align: start;
+    height: 100vh;
+}
+
+.main-weather {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.temp-now {
+    font-size: 50px ;
+    margin: 0;
+}
+
+.current {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.weather-list {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #fff;
+    margin: 0 10% 5% 10%;
+
+    &.hourly {
+        display: grid;
+        grid-template-columns: repeat(48, 1fr);
+        overflow-x:auto;
+        height: 180px;
+    }
+
+    &.daily {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        overflow-x:auto;
+        height: 180px;
+    }
+}
+
+.weather-card {
+    margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: $card-color;
+    width: 130px;
+    height: 100px;
+    padding: 20px;
+    text-align: center;
+}
+
+.weather-card:hover {
+    opacity: 0.8;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .details-col {
+        text-align: left;
+        padding-top: 10%;
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+
+        p {
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
+        .humidity {
+            bottom: 20px;
+            position: relative;   
+        }
+
+        .humidity-bar {
+            display: inline-block;
+            position: relative;
+            background-color: #70707049;
+            border-radius: 20px;
+            height: 54px;
+            width: 3px;
+            margin-right: 10px;
+
+            .humidity-progress {
+                display: inline-block;
+                width: 3px;
+                background-color: #4388FF;
+                position: absolute;
+                bottom: 0px;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+        }
+    }
+
+    .weather-desc {
+        padding-top: 0;
+        border-bottom: solid 2px #7575757c;
+        padding-bottom: 30%;
+
+        .weather-main {
+            font-size: 20px;
+        }
+    }
+
+    .temp-col {
+        padding-top: 10%;
+        border-bottom: solid 2px #7575757c;
+    }
+
+    .main-temp {
+        font-size: 40px;
+    }
+
+    .detail-header {
+        margin-left: 0px !important;
+        text-align: left;
+        font-size: 20px;
+        color: #72727280
+    }
+    
+}
