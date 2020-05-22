@@ -10,12 +10,17 @@ import Chart from './components/Chart';
 
 function App() { 
       const context = useContext(WeatherContext);
-      const loading = context.state.loading
+      const state = context.state
 
-      if(loading)
+      if((state.loading 
+        || Object.entries(state.weather).length === 0)
+        && state.error.length === 0) 
+         // Check if state is loading or weather object is empty and there are no errors
+      {
         return <p>Loading...</p>
+      }
 
-      return (
+        return (
           <div className="App">
                 <div className="top">
                   <WeatherNow />

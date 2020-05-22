@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const DataSelect = props => {
     const [display, setDisplay] = useState(false)
     const [selected, setSelected] = [props.selected, props.setSelected]
-    const values = ["Humidity", "Wind", "Clouds"]
+    const values = ["Temperature", "Humidity", "Wind", "Clouds"]
 
     const toggleDrop = () => {
         setDisplay(!display)
@@ -17,7 +17,7 @@ const DataSelect = props => {
         display: "block"
     };
 
-    const selectGraph = param => {
+    const selectData = param => {
         setSelected(param)
         setDisplay(false)
     }
@@ -28,7 +28,7 @@ const DataSelect = props => {
             <span className="dropdown_toggler" onClick={toggleDrop}>></span>
             <ul className="dropdown_select" style={display ? displayed : notDisplayed}>
                 {values.map(value => 
-                    <li onClick={() => selectGraph(value)}>{value}</li>
+                    <li onClick={() => selectData(value)}>{value}</li>
                     )}
             </ul>
         </div>

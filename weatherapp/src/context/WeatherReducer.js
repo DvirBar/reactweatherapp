@@ -43,6 +43,15 @@ const formatTemp = (weather, isFahren) => {
       }
 }
 
+const filterHourly = weather => {
+  return weather.filter((item, index) => {
+    if(index % 3 === 0 && index <= 24)
+    {
+      return item
+    }
+  })
+}
+
 export const WeatherReducer = (state, action) => {
     switch(action.type) {
         case 'WEATHER_LOADING':
@@ -56,7 +65,10 @@ export const WeatherReducer = (state, action) => {
             loading: false,
             error: '',
             isFahren: false,
-            weather: action.payload
+            weather: {
+                ...action.payload,
+                hourly: filterHourly(action.payload.hourly)
+            }
           };
         case 'WEATHER_ERROR':
           return {
