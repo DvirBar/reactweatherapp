@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import DataSelect from './DataSelect';
 import { Line } from 'react-chartjs-2';
 import { WeatherContext } from '../context/WeatherContext';
-import moment from 'moment'
+import moment from 'moment';
 
 function Chart() {
     const [selected, setSelected] = useState('Temperature')
@@ -32,7 +32,8 @@ function Chart() {
         setYAxes({
             beginAtZero: sel !== 'temp',
             min: sel === 'temp'? Math.min(...fetchData) - 10 : 0,
-            max: Math.max(...fetchData) + 10
+            max: Math.max(...fetchData) + 10,
+            fontColor: '#fff'
         })
     }, [fetchData])
 
@@ -53,6 +54,11 @@ function Chart() {
         scales: {
             yAxes: [{
                 ticks: yAxes
+            }],
+            xAxes: [{
+                ticks: {
+                    fontColor: '#fff'
+                }
             }]
         },
         legend: {

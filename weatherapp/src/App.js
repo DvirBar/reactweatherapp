@@ -6,6 +6,7 @@ import WeatherNow from './components/WeatherNow';
 import WeatherHourly from './components/WeatherHourly';
 import WeatherDaily from './components/WeatherDaily';
 import Chart from './components/Chart';
+import DailyChart from './components/DailyChart';
 
 
 function App() { 
@@ -32,6 +33,7 @@ function App() {
                 </div>
                 <div className="daily">
                   <WeatherDaily />
+                  <DailyChart />
                 </div>
           </div>
         );
