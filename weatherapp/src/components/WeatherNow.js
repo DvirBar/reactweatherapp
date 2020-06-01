@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { WeatherContext } from '../context/WeatherContext';
 import moment from 'moment-timezone';
+import { useTranslation } from 'react-i18next';
 
 function WeatherNow() {
     const context = useContext(WeatherContext);
@@ -9,6 +10,7 @@ function WeatherNow() {
     const isFahren = context.state.isFahren;
     const [weather, setWeather] = useState(weatherInfo.current);
     const [img, setImg] = useState('');
+    const { t } = useTranslation();
 
     useEffect(() => {
         setWeather(weatherInfo.current);
@@ -29,12 +31,14 @@ function WeatherNow() {
                     {Math.round(weather.temp)}&#730;
                     {isFahren ? <span>F</span> : <span>C</span>}
                 </p>
-                <p>Feels like: 
-                    {Math.round(weather.feels_like)}&#730;
-                    {isFahren ? <span>F</span> : <span>C</span>}
+                <p><span>{t("feels like")}:</span>
+                    <span>
+                        {Math.round(weather.feels_like)}&#730;
+                        {isFahren ? <span>F</span> : <span>C</span>}
+                    </span>
                     </p>
                 <p className="current">
-                    Updated: {moment.unix(weather.dt).tz(timeZone).format('ddd, MMMM Do HH:MM')}
+                    {t("updated")}: {moment.unix(weather.dt).tz(timeZone).format('ddd, MMMM Do HH:MM')}
                 </p>
             </Fragment>
             }

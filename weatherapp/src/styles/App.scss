@@ -31,6 +31,21 @@ p {
     background: #555
 }
 
+.menu {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin:0;
+    height: 50px;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.lang-select {
+    float: left;
+    margin-left: 10px;
+}
+
 .top {
     height: 100vh;
 }

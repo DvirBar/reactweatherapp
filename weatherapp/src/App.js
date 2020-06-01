@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './styles/css/App.css'; 
 import { WeatherContext } from './context/WeatherContext';
-import DegreeToggle from './components/DegreeToggle';
+import DegreeToggle from './components/stickyMenu/DegreeToggle';
+import ChangeLang from './components/stickyMenu/ChangeLang';
 import WeatherNow from './components/WeatherNow';
 import WeatherHourly from './components/WeatherHourly';
 import WeatherDaily from './components/WeatherDaily';
@@ -11,7 +12,8 @@ import DailyChart from './components/DailyChart';
 
 function App() { 
       const context = useContext(WeatherContext);
-      const state = context.state
+      const state = context.state;
+      const [direction, setDirection] = useState({direction: 'ltr'})
 
       if((state.loading 
         || Object.entries(state.weather).length === 0)
@@ -22,10 +24,13 @@ function App() {
       }
 
         return (
-          <div className="App">
+          <div className="App" style={direction}>
+                <div className="menu">
+                  <DegreeToggle />
+                  <ChangeLang direction={direction} setDirection={setDirection} />
+                </div>
                 <div className="top">
                   <WeatherNow />
-                  <DegreeToggle />
                 </div>
                 <div className="hourly">
                   <WeatherHourly />

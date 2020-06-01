@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { WeatherContext } from '../context/WeatherContext';
+import { WeatherContext } from '../../context/WeatherContext';
 
 function DegreeToggle() {
     const context = useContext(WeatherContext)

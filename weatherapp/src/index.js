@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { WeatherProvider } from './context/WeatherContext';
 import './index.css';
+import './i18n';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
